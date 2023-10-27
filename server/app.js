@@ -5,14 +5,12 @@ const logger = require("morgan");
 const path = require("path");
 const mongoose = require("mongoose");
 const indexRouter = require("./routes/index");
-
+require("./controllers/courseController");
 require("dotenv").config();
 mongoose.connect(process.env.MONGO_CONNECTION_STRING);
 
 const app = express();
 
-const cors = require("cors");
-app.use(cors());
 const cors = require("cors");
 app.use(cors());
 
