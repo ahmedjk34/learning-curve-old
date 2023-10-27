@@ -2,7 +2,7 @@ import "./styles/pages/global-rules.scss";
 type Props = {};
 
 function App({}: Props) {
-  return <div>App</div>;
+  return <></>;
 }
 
 export default App;
