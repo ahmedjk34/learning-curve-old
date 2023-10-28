@@ -8,7 +8,9 @@
 #root {
   display: grid;
   min-height: 100vh;
+  grid-template: 5rem 1fr 3.25rem / 1fr;
 }
+
 html {
   scroll-behavior: smooth;
 }
