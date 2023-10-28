@@ -1,0 +1,39 @@
+@use "../variables/variables" as v;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 6vw;
+  border-bottom: 0.5rem solid v.$secondaryColor;
+
+  .logo {
+    height: 100%;
+    width: auto;
+  }
+  .navOptions {
+    display: flex;
+    gap: 2rem;
+    & > h3 {
+      font-family: v.$titleFont;
+      font-weight: 700;
+    }
+  }
+  .profileMenu {
+    width: 6rem;
+    border-radius: 2rem;
+    height: 2.75rem;
+    background-color: v.$secondaryColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      height: 2.5rem;
+      width: auto;
+      border-radius: 5rem;
+    }
+    .icon {
+      margin-left: 1rem;
+    }
+  }
+}
