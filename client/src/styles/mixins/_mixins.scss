@@ -1,0 +1,28 @@
+@use "../variables/variables" as v;
+@mixin heroAnimation($name, $from) {
+  @keyframes #{$name} {
+    0% {
+      transform: translate($from);
+      opacity: 0;
+      scale: 0.9;
+    }
+
+    100% {
+      transform: translate(0%);
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}
+@mixin textUnderline() {
+  &::after {
+    content: "";
+    display: block;
+    width: 14rem;
+    height: 0.5rem;
+    background-color: v.$secondaryColor;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 20%);
+  }
+}

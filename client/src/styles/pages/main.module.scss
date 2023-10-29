@@ -1,0 +1,93 @@
+@use "../variables/variables" as v;
+@use "../mixins/mixins" as m;
+@include m.heroAnimation(fadeLeft, -20%);
+@include m.heroAnimation(fadeRight, 20%);
+.main {
+  padding: 2rem;
+  background-color: v.$mainColor;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+  gap: 1rem;
+  .heroSection {
+    display: grid;
+    grid-template: 1fr/1fr 1fr;
+    place-content: center;
+    place-items: center;
+    .content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 6vh;
+      animation-name: fadeLeft;
+      animation-duration: 1s;
+      h1 {
+        margin-top: 3vh;
+        font-family: v.$titleFont;
+        font-size: 3.5rem;
+      }
+      h3 {
+        font-family: v.$mainFont;
+        font-weight: 400;
+      }
+      .buttonsHolder {
+        margin-top: 3vh;
+        display: flex;
+        gap: 2rem;
+
+        button {
+          width: 12rem;
+          height: 3rem;
+          border-radius: 2rem;
+          border: none;
+          font-family: v.$helperFont;
+          font-size: medium;
+        }
+        button:nth-child(1) {
+          background-color: v.$helperColor;
+          color: v.$mainColor;
+        }
+        button:nth-child(2) {
+          background-color: v.$mainColor;
+          border: 2px solid v.$secondaryColor;
+        }
+      }
+    }
+    img {
+      height: 50vh;
+      width: 100%;
+      object-fit: cover;
+      animation-name: fadeRight;
+      animation-duration: 1s;
+    }
+  }
+  .featuredCourses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    h2 {
+      font-family: v.$titleFont;
+      font-weight: 500;
+      position: relative;
+      @include m.textUnderline;
+    }
+    .courses {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      grid-template-rows: 400px;
+      grid-auto-rows: 400px;
+      gap: 1rem;
+      div {
+        background-color: v.$mainColor;
+        box-shadow: 0px 4px 12px v.$secondaryColor;
+      }
+    }
+  }
+  .moreAboutUs {
+  }
+  .reviews {
+  }
+}
