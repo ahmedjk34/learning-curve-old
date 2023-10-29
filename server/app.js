@@ -4,8 +4,7 @@ const httpErrors = require("http-errors");
 const logger = require("morgan");
 const path = require("path");
 const mongoose = require("mongoose");
-const indexRouter = require("./routes/index");
-require("./controllers/courseController");
+const courseRouter = require("./routes/courseRoute");
 require("dotenv").config();
 mongoose.connect(process.env.MONGO_CONNECTION_STRING);
 
@@ -20,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use("/", courseRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
