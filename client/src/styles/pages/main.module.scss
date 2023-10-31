@@ -2,11 +2,15 @@
 @use "../mixins/mixins" as m;
 @include m.heroAnimation(fadeLeft, -20%);
 @include m.heroAnimation(fadeRight, 20%);
+@include m.featuredCoursesAnimation(fadeIn);
+@include m.reviewsAnimation(fadeRightReview, 10%);
+@include m.reviewsAnimation(fadeLeftReview, -10%);
+
 .main {
   padding: 2rem;
   background-color: v.$mainColor;
   display: grid;
-  grid-template: 1fr 1fr / 1fr;
+  grid-template: 1fr 1fr 1fr 1.5fr / 1fr;
   gap: 1rem;
   .heroSection {
     display: grid;
@@ -62,32 +66,185 @@
       animation-duration: 1s;
     }
   }
-  .featuredCourses {
+
+  .featuredCourses,
+  .moreAboutUs,
+  .reviews {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    h2 {
+    > h2 {
       font-family: v.$titleFont;
       font-weight: 500;
       position: relative;
       @include m.textUnderline;
+      margin-bottom: 2rem;
     }
+  }
+
+  .featuredCourses {
     .courses {
       display: grid;
       width: 100%;
-      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       grid-template-rows: 400px;
       grid-auto-rows: 400px;
       gap: 1rem;
-      div {
+      animation-name: fadeIn;
+      animation-duration: 2s;
+      .course {
         background-color: v.$mainColor;
         box-shadow: 0px 4px 12px v.$secondaryColor;
+        display: grid;
+        grid-template: 230px 0.4fr 1fr 1fr / 1fr;
+        place-items: center;
+
+        .coverImg {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+        > div {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          padding: 0 1rem;
+          margin-top: 0.4rem;
+          h4 {
+            font-family: v.$mainFont;
+            opacity: 0.5;
+          }
+        }
+        h3 {
+          font-family: v.$mainFont;
+          font-weight: 600;
+          text-align: center;
+        }
+
+        button {
+          width: 12rem;
+          height: 3rem;
+          border-radius: 0.4rem;
+          background-color: v.$helperColor;
+          border: none;
+          color: v.$mainColor;
+          font-family: v.$mainFont;
+          font-size: large;
+        }
       }
     }
   }
   .moreAboutUs {
+    .info {
+      display: flex;
+      gap: 5rem;
+      padding: 2rem 3rem;
+      animation: fadeIn 0.7s;
+
+      > div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: clamp(6rem, 50%, 15rem);
+        }
+        h2 {
+          margin-top: 0.5rem;
+          font-family: v.$mainFont;
+          font-weight: 900;
+          font-size: 2.2rem;
+        }
+        h4 {
+          font-family: v.$titleFont;
+        }
+      }
+    }
   }
   .reviews {
+    > div {
+      display: grid;
+      place-content: center;
+      width: 100%;
+      height: 100%;
+      grid-template-rows: repeat(3, minmax(10rem, 1fr) 4rem);
+      grid-template-columns: 2fr 1fr;
+    }
+    .reviewCard {
+      width: 95%;
+      box-shadow: 0px 4px 12px v.$secondaryColor;
+      border: 3px solid v.$helperColor;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      h4 {
+        font-family: v.$titleFont;
+        font-weight: 700;
+      }
+      .courseInfo {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        > div {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          img {
+            width: 2rem;
+            border-radius: 4rem;
+          }
+        }
+      }
+      .enroll {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        button {
+          width: 6rem;
+          height: 2rem;
+          border-radius: 0.4rem;
+          background-color: v.$helperColor;
+          border: none;
+          color: v.$mainColor;
+          font-family: v.$mainFont;
+          font-size: large;
+        }
+        h3 {
+          font-family: v.$helperFont;
+          font-weight: 400;
+        }
+      }
+    }
+    @for $i from 1 to 6 {
+      @if ($i%2 != 0) {
+        //odd n values
+        .reviewCard:nth-child(#{$i}) {
+          animation-name: fadeLeftReview;
+          animation-duration: 1s;
+          grid-row: #{$i} / #{$i + 1};
+          grid-column: 1/2;
+          width: 92%;
+        }
+      } @else {
+        //even n values
+        //cards on the right
+        .reviewCard:nth-child(#{$i}) {
+          animation-name: fadeRightReview;
+          animation-duration: 1s;
+          grid-row: #{$i - 1} / span 2;
+          @if $i == 4 {
+            grid-row: 5 / span 2;
+          }
+          grid-column: 2/3;
+          .enroll {
+            flex-direction: column;
+          }
+        }
+      }
+    }
   }
 }
