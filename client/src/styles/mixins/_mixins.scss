@@ -26,15 +26,14 @@
     }
   }
 }
-@mixin reviewsAnimation($name, $from) {
+@mixin reviewsAnimation($name) {
   @keyframes #{$name} {
     0% {
-      transform: translate($from);
       opacity: 0;
+      scale: 0.7;
     }
 
     100% {
-      transform: translate(0%);
       opacity: 1;
     }
   }
