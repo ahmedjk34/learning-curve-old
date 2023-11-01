@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./components/About";
 import CoursePage from "./components/course-page/CoursePage";
 import Footer from "./components/Footer";
-import Main from "./components/Main";
+import Main from "./components/main/Main";
 import Nav from "./components/Nav";
 import SearchPage from "./components/SearchPage";
 import "./styles/pages/global-rules.scss";
