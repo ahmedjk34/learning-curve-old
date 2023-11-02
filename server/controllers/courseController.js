@@ -14,3 +14,8 @@ exports.courses = async function (req, res) {
     .select("coverImg rating enrolledStudents title");
   res.json(response);
 };
+exports.getCourse = async function (req, res) {
+  const id = req.params.id;
+  const response = await courseModel.findById(id);
+  res.json(response);
+};
