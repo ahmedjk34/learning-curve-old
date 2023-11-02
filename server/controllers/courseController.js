@@ -8,3 +8,9 @@ exports.featuredCourses = async function (req, res) {
     .limit(4);
   res.json(response);
 };
+exports.courses = async function (req, res) {
+  const response = await courseModel
+    .find({})
+    .select("coverImg rating enrolledStudents title");
+  res.json(response);
+};
