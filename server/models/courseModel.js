@@ -4,10 +4,6 @@ const review = {
   body: String,
   rating: Number,
 };
-const episode = {
-  title: String,
-  url: String,
-};
 const courseSchema = new Schema({
   title: String,
   rating: Number,
@@ -15,7 +11,7 @@ const courseSchema = new Schema({
   learningGoals: [String],
   prerequisites: [String],
   reviews: [review],
-  episodes: [episode],
+  episodes: [String],
   coverImg: String,
 });
 
