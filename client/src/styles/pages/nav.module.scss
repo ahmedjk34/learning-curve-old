@@ -27,13 +27,58 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    transition: transform ease-in-out 0.4s;
+
     img {
       height: 2.5rem;
-      width: auto;
+      width: 2.5rem;
+      object-fit: cover;
       border-radius: 5rem;
     }
     .icon {
       margin-left: 1rem;
+      transition: transform ease-in-out 0.4s;
+    }
+    button {
+      width: 6rem;
+      border-radius: 2rem;
+      height: 2.75rem;
+      background: none;
+      outline: none;
+      border: none;
+      color: white;
+      font-family: v.$titleFont;
+      font-weight: 700;
+      font-size: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .dropdown {
+      padding: 1rem;
+      position: absolute;
+      width: 6rem;
+      background-color: v.$secondaryColor;
+      bottom: -5rem;
+      color: white;
+      font-family: v.$mainFont;
+      border-radius: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity ease-in-out 0.4s;
+    }
+
+    &:hover {
+      cursor: pointer;
+      .dropdown {
+        visibility: visible;
+        opacity: 1;
+      }
+      .icon {
+        transform: rotate(180deg);
+      }
+      transform: scale(1.05);
     }
   }
 }
