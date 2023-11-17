@@ -9,3 +9,12 @@ export interface Course {
   episodes: any[];
   coverImg: string;
 }
+export interface CustomUser {
+  userId: Number;
+  episodesWatched: [
+    {
+      courseId: String;
+      eps: [Number];
+    }
+  ];
+}
