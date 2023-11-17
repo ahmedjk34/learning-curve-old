@@ -2,7 +2,7 @@ import styles from "../../styles/pages/main.module.scss";
 import { useEffect, useState } from "react";
 import { Course } from "../../Types";
 import axios from "axios";
-import CourseCard from "../courseCard";
+import CourseCard from "../CourseCard";
 
 function FeaturedCourses() {
   const [featuredCourses, setFeaturedCourses] = useState<null | Course[]>();

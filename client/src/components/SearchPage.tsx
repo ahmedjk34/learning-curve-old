@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/pages/searchPage.module.scss";
 import { BsSearch } from "react-icons/bs";
 import { Course } from "../Types";
 import axios from "axios";
-import CourseCard from "./courseCard";
+import CourseCard from "./CourseCard";
 
 type Props = {};
 function SearchPage({}: Props) {
