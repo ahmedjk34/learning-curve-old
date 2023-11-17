@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const course = {
-  courseId: Number,
+  courseId: Schema.Types.ObjectId,
   eps: [Number],
   _id: false,
 };
