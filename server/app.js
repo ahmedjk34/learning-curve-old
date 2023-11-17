@@ -4,7 +4,7 @@ const httpErrors = require("http-errors");
 const logger = require("morgan");
 const path = require("path");
 const mongoose = require("mongoose");
-const courseRouter = require("./routes/courseRoute");
+const router = require("./routes/routes");
 require("dotenv").config();
 mongoose.connect(process.env.MONGO_CONNECTION_STRING);
 
@@ -12,14 +12,18 @@ const app = express();
 
 const cors = require("cors");
 app.use(cors());
+// For parsing application/json:
+app.use(require("body-parser").json());
 
+// For parsing application/x-www-form-urlencoded
+app.use(require("body-parser").urlencoded({ extended: true }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", courseRouter);
+app.use("/", router);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
