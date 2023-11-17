@@ -1,0 +1,128 @@
+@use "../variables/variables" as v;
+.coursePage {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+
+  .mainInfo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    h1 {
+      font-family: v.$titleFont;
+      font-weight: 700;
+      font-size: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      &::after {
+        content: "This is one of our best technical courses , Highly recommended";
+        font-size: 1rem;
+        opacity: 0.6;
+        font-weight: 500;
+        color: v.$secondaryColor;
+      }
+    }
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .secondaryInfo {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 2rem;
+      align-items: center;
+      font-family: v.$mainFont;
+      gap: 2rem;
+    }
+    img {
+      height: 12rem;
+      width: 30rem;
+      object-fit: cover;
+    }
+  }
+  .goals {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 70%;
+    h2 {
+      font-family: v.$titleFont;
+      font-weight: 500;
+    }
+    ul {
+      list-style-type: none;
+      font-family: v.$mainFont;
+      margin-top: 0.5rem;
+    }
+
+    ul li:before {
+      content: "-";
+      position: absolute;
+      margin-left: -10px;
+    }
+  }
+  .viewCourse {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      font-family: v.$titleFont;
+      font-weight: 500;
+    }
+    > div {
+      position: relative;
+      display: grid;
+      grid-template: 1fr / 10rem 1fr;
+      box-shadow: 0 0 24px black;
+    }
+    .epList {
+      font-family: v.$mainFont;
+      font-weight: 600;
+      font-size: large;
+      text-align: center;
+      border: 2px solid black;
+      border-right: none;
+      > div {
+        padding: 1rem;
+        border-bottom: 2px solid black;
+      }
+    }
+    .player {
+      width: 100%;
+      opacity: 0.4;
+      transition: opacity 1s;
+      grid-column: 2/3;
+      grid-row: 1/2;
+      visibility: hidden;
+    }
+    .active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .completeBtn {
+      position: absolute;
+      bottom: -4rem;
+      right: 0;
+      height: 3rem;
+      width: 16rem;
+      font-size: medium;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 4rem;
+      font-family: v.$titleFont;
+      font-weight: 700;
+    }
+  }
+  .reviews {
+  }
+}
