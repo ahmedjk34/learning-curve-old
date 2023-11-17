@@ -5,7 +5,7 @@ exports.getUser = async function (req, res) {
   const user = await userModel.where("userId").equals(id);
   res.json(user);
 };
-exports.setUser = async function (req, res) {
+exports.createUser = async function (req, res) {
   id = req.body.userId;
   eps = req.body.episodesWatched;
   //guard
