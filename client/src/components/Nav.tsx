@@ -23,7 +23,6 @@ function Nav({}: Props) {
     if (!isAuthenticated) return;
     //when logging in
     const userId = user?.sub?.substring(user?.sub?.indexOf("|") + 1);
-    console.log(userId);
     axios.post(`http://localhost:3000/user/${userId}`, {
       userId: userId,
       episodesWatched: [],
