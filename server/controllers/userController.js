@@ -14,6 +14,7 @@ exports.createUser = async function (req, res) {
   if (!userExists.length) {
     await userModel.create({ userId: id, episodesWatched: eps });
   }
+  res.end("");
 };
 exports.enrollInCourse = async function (req, res) {
   userId = req.body.userId;
@@ -29,11 +30,13 @@ exports.enrollInCourse = async function (req, res) {
       },
     }
   );
+  res.end("");
 };
 exports.updateWatchedEpisodes = async function (req, res) {
   userId = req.body.userId;
   courseId = req.body.courseId;
-  eps = JSON.parse(req.body.episodesWatched);
+  eps = req.body.episodesWatched;
+  if (!eps || !userId || !courseId) return;
   console.log(userId, courseId, eps);
   await userModel.updateOne(
     { userId: userId, "episodesWatched.courseId": courseId },
@@ -43,4 +46,5 @@ exports.updateWatchedEpisodes = async function (req, res) {
       },
     }
   );
+  res.end("");
 };
